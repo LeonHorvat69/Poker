@@ -1,0 +1,7 @@
+﻿  functions.c
+C:\Users\student\source\repos\Pokerreal\functions.c(218,38): warning C4047: '=': 'int' differs in levels of indirection from 'char *'
+C:\Users\student\source\repos\Pokerreal\functions.c(225,22): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
+C:\Users\student\source\repos\Pokerreal\functions.c(225,38): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
+C:\Users\student\source\repos\Pokerreal\functions.c(239,43): warning C4090: '=': different 'const' qualifiers
+C:\Users\student\source\repos\Pokerreal\functions.c(433): warning C4172: returning address of local variable or temporary: arr
+  Pokerreal.vcxproj -> C:\Users\student\source\repos\Pokerreal\Debug\Pokerreal.exe
