@@ -7,20 +7,22 @@ void assignSuit(CARD* card);
 void shuffleDeck(CARD* deck[], CARD* allCardsInOrder[]);
 
 // PRINT HAND
-void printHand(const CARD* hand[], const int discards, const int score);
+void printGame(const PLAYER_INFO* playerInfo, const int discardUsed);
 void printInstructions();
-void printCard(const int numOfCardsPlayed, CARD* playedHand[]);
-void setCardCollor(const CARD* hand, const int color);
+void FindCardSuit(const PLAYER_INFO* playerInfo);
+void printCardColor(const CARD* hand, const int ChoseColor);
 
 // PLAYING HAND
-void playHand(CARD* hand[], int* cardsPlayed, CARD* playedHand[], const CARD* deck[], const int score);
-void sortPlayedHand(CARD* playedHand[], const int numOfCardsPlayed);
-void arraySwitchPlace(CARD* array[], int indexA, int indexB);
+void playHand(PLAYER_INFO* playerInfo);
+void sortPlayedHand(PLAYER_INFO* playerInfo);
+inline void arraySwitchPlace(CARD* array[],const int indexA, const int indexB);
+inline void arraySwitchPlaceInt(int* array, const int indexA, const int indexB);
+int getInput();
 
 // SCORING
-int scoreHand(const CARD* playedHand[], const int numOfCardsPlayed, int score);
-int calculateChips(const CARD* playedHand[], const int numOfCardsPlayed, int* cardChips);
-int calculateMult(const CARD* playedHand[], const int numOfCardsPlayed);
-char* handType(const CARD* playedHand[], const int numOfCardsPlayed);
-int* sameRankCount(const CARD* playedHand[], const int numOfCardsPlayed);
-int arrayGetSingleNumber(const int* sameRankList, const int numOfCardsPlayed);
+void scoreHand(PLAYER_INFO* playerInfo);
+int calculateChips(const PLAYER_INFO* playerInfo, int* cardChips);
+int calculateMult(const PLAYER_INFO* playerInfo);
+char* handType(const PLAYER_INFO* playerInfo);
+int* sameRankCount(playerInfo, tempArray);
+int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList);
