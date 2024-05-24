@@ -1,5 +1,0 @@
-﻿  functions.c
-C:\Users\Liongamer69\Desktop\LH\3 PROGRAMS\Pokerreal\functions.c(133,27): warning C4090: 'function': different 'const' qualifiers
-  poker.c
-  Generating Code...
-  Pokerreal.vcxproj -> C:\Users\Liongamer69\Desktop\LH\3 PROGRAMS\Pokerreal\x64\Debug\Pokerreal.exe
