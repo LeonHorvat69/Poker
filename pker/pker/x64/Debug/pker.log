@@ -1,0 +1,3 @@
+﻿  functions.c
+F:\CODE\Poker\pker\functions.c(443,9): warning C4047: '=': 'FILE *' differs in levels of indirection from 'int'
+  pker.vcxproj -> F:\CODE\Poker\pker\x64\Debug\pker.exe
