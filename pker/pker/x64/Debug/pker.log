@@ -1,0 +1,8 @@
+﻿  functions.c
+  poker.c
+C:\Users\Liongamer69\Desktop\Poker\pker\functions.c(133,27): warning C4090: 'function': different 'const' qualifiers
+C:\Users\Liongamer69\Desktop\Poker\pker\functions.c(412,14): warning C4013: 'menuGetInput' undefined; assuming extern returning int
+C:\Users\Liongamer69\Desktop\Poker\pker\functions.c(450,9): warning C4047: '=': 'FILE *' differs in levels of indirection from 'int'
+C:\Users\Liongamer69\Desktop\Poker\pker\poker.c(54,37): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
+  Generating Code...
+  pker.vcxproj -> C:\Users\Liongamer69\Desktop\Poker\pker\x64\Debug\pker.exe
