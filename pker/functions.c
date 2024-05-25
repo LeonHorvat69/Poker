@@ -129,7 +129,7 @@ void printInstructions() {
 	printf("High Card\t   5 X 1\t\t\t\n");
 	printf("\n\n");
 }
-void FindCardSuit(const PLAYER_INFO* playerInfo) {
+void FindCardSuit(PLAYER_INFO* playerInfo) {
 	sortPlayedHand(playerInfo);
 
 	for (int i = 0; i < playerInfo->cardsPlayed; i++) {
@@ -179,13 +179,13 @@ void playHand(PLAYER_INFO* playerInfo) {
 	int numOfCardsPlayed = 0;
 	int input = 0;
 	do {
-		input = getInput();
+		input = getInput("gameInput");
 		if (input == 0)
 			break;
 		for (int i = 0; i < numOfCardsPlayed; i++) {
 			if (playerInfo->playedHand[i]->rank == playerInfo->hand[input - 1]->rank &&
 				playerInfo->playedHand[i]->suit == playerInfo->hand[input - 1]->suit) {
-				input = getInput(); //Ako je karta vec u ruci iskoristena ponovo upisi input
+				input = getInput("gameInput"); //Ako je karta vec u ruci iskoristena ponovo upisi input
 				if (input == 0)
 					break;
 			}
@@ -213,27 +213,42 @@ void playHand(PLAYER_INFO* playerInfo) {
 	playerInfo->cardsPlayed = numOfCardsPlayed;
 	FindCardSuit(playerInfo);
 }
-int getInput() {
+int getInput(char* chooseInput) {
+	int min = 0;
+	int max = 0;
+	if (strcmp(chooseInput, "gameInput") == 0) {
+		char* text = "Input cards to play";
+		min = -8;
+		max = 8;
+	}
+	else if (strcmp(chooseInput, "menuInput") == 0) {
+		char* text = "Input menu option";
+		min = 1;
+		max = 4;
+	}
 	int input = 0;
 	char keyInput[50];
 	do {
 		printf("Input cards to play: ");
 		if (fgets(keyInput, 40, stdin) == NULL) {
+			
 			memset(keyInput, '\0', 40);
-			input = getInput();
+			input = getInput(chooseInput);
 		}
-		if (keyInput[0] == '0') {
+		if (keyInput[0] == '0' || min != 1) {
+			
 			input = 0;
 			return input;
 		}
 		input = atoi(keyInput);
 		if (input == 0) {
+			
 			memset(keyInput, '\0', 40);
-			input = getInput();
+			input = getInput(chooseInput);
 		}
 		printf("\n");
-
-	} while (input < -8 || input > 8);
+		
+	} while (input < min || input > max);
 	return input;
 }
 void sortPlayedHand(PLAYER_INFO* playerInfo) {
@@ -409,37 +424,20 @@ int printMenu() {
 	printf("2. Tutorial\n");
 	printf("3. High score\n");
 	printf("4. Exit game\n");
-	int input = menuGetInput();
+	int input = getInput("menuInput");
 	system("cls");
 	return input;
 }
 
-int menuGetInput() {
-	int input = 0;
-	char keyInput[50];
-	do {
-		printf("Input cards to play: ");
-		if (fgets(keyInput, 40, stdin) == NULL) {
-			memset(keyInput, '\0', 40);
-			input = getInput();
-		}
-		input = atoi(keyInput);
-		if (input == 0) {
-			memset(keyInput, '\0', 40);
-			input = getInput();
-		}
-		printf("\n");
 
-	} while (input < 1 || input > 4);
-	return input;
-}
 
 int printGameInstructions() {
 	printf("Each round you are handed 8 cards and from them choose 5 cards or less to play.\n");
 	printf("You can discard up to 3 cards in a round to create a new hand.\n");
 	printf("All hand types have different values and multipliers which add up with the worth of each rank from each card.\n");
 	printf("The goal is to get as high of a score as you can.\n");
-	Sleep(15000);
+	printf("\n\t\t  [Press any key to continue]");
+	_getch();
 	return printMenu();
 }
 

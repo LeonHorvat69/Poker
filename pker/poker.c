@@ -42,11 +42,12 @@ int main() {
 
 
 
-	int choice = printMenu();
+	int choice = 0;
 	while (choice != 4) {
+		choice = printMenu();
 		if (choice == 2) {
 			printGameInstructions();
-			choice = printMenu();
+			continue;
 		}
 		if (choice == 3) {
 			int highScore = 0;
@@ -54,11 +55,12 @@ int main() {
 			if (fscanf(fp, "%d", &highScore) == NULL) {
 				perror("ERROR: ");
 				exit(-1);
-
 			}
 			printf("High score is %d", highScore);
-			Sleep(5000);
+			printf("\n\t\t  Press any key to continue");
+			_getch();			
 			fclose(fp);
+			continue;
 		}
 
 
@@ -86,7 +88,6 @@ int main() {
 			}
 			statistics.round++;
 		}
-		choice = printMenu();
 	}
 
 	free(card);

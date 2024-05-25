@@ -1,13 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\",
+  "WorkspaceRootPath": "F:\\CODE\\Poker\\pker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|F:\\CODE\\Poker\\pker\\functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|solutionrelative:functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|F:\\CODE\\Poker\\pker\\structs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|solutionrelative:structs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|F:\\CODE\\Poker\\pker\\functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|solutionrelative:functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\poker.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|F:\\CODE\\Poker\\pker\\poker.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{6A744619-7BDE-42C8-9C51-E5C0025032EC}|pker.vcxproj|solutionrelative:poker.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -18,36 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "poker.c",
+              "DocumentMoniker": "F:\\CODE\\Poker\\pker\\poker.c",
+              "RelativeDocumentMoniker": "poker.c",
+              "ToolTip": "F:\\CODE\\Poker\\pker\\poker.c",
+              "RelativeToolTip": "poker.c",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAC8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-05-24T21:35:59.972Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "poker.c",
-              "DocumentMoniker": "C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\poker.c",
-              "RelativeDocumentMoniker": "poker.c",
-              "ToolTip": "C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\poker.c",
-              "RelativeToolTip": "poker.c",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "functions.c",
+              "DocumentMoniker": "F:\\CODE\\Poker\\pker\\functions.c",
+              "RelativeDocumentMoniker": "functions.c",
+              "ToolTip": "F:\\CODE\\Poker\\pker\\functions.c",
+              "RelativeToolTip": "functions.c",
+              "ViewState": "AQIAAHMAAAAAAAAAAAAuwIMAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-05-24T21:35:59.972Z",
+              "WhenOpened": "2024-05-24T21:35:59.058Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "functions.c",
-              "DocumentMoniker": "C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\functions.c",
-              "RelativeDocumentMoniker": "functions.c",
-              "ToolTip": "C:\\Users\\Liongamer69\\Desktop\\Poker\\pker\\functions.c",
-              "RelativeToolTip": "functions.c",
-              "ViewState": "AQIAAK0BAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-05-24T21:35:59.058Z",
+              "Title": "functions.h",
+              "DocumentMoniker": "F:\\CODE\\Poker\\pker\\functions.h",
+              "RelativeDocumentMoniker": "functions.h",
+              "ToolTip": "F:\\CODE\\Poker\\pker\\functions.h",
+              "RelativeToolTip": "functions.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-24T21:40:24.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "structs.h",
+              "DocumentMoniker": "F:\\CODE\\Poker\\pker\\structs.h",
+              "RelativeDocumentMoniker": "structs.h",
+              "ToolTip": "F:\\CODE\\Poker\\pker\\structs.h",
+              "RelativeToolTip": "structs.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-24T21:40:25.974Z",
               "EditorCaption": ""
             }
           ]

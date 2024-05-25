@@ -9,7 +9,7 @@ void shuffleDeck(CARD* deck[], CARD* allCardsInOrder[]);
 // PRINT HAND
 void printGame(const PLAYER_INFO* playerInfo, const int discardUsed);
 void printInstructions();
-void FindCardSuit(const PLAYER_INFO* playerInfo);
+void FindCardSuit(PLAYER_INFO* playerInfo);
 void printCardColor(const CARD* hand, const int ChoseColor);
 
 // PLAYING HAND
@@ -17,7 +17,7 @@ void playHand(PLAYER_INFO* playerInfo);
 void sortPlayedHand(PLAYER_INFO* playerInfo);
 inline void arraySwitchPlace(CARD* array[], const int indexA, const int indexB);
 inline void arraySwitchPlaceInt(int* array, const int indexA, const int indexB);
-int getInput();
+int getInput(char*);
 
 // SCORING
 void scoreHand(PLAYER_INFO* playerInfo);
