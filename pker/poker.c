@@ -35,15 +35,11 @@ int main() {
 	playerInfo.score = 0;
 	playerInfo.statistics = statisticsP;
 	statistics.round = 1;
-
 	shuffleDeck(playerInfoP->deck, allCardsInOrder);
+
 	int startRound = 1;
-
-
-
-
 	int choice = 0;
-	while (choice != 4) {
+	while (1) {
 		choice = printMenu();
 		if (choice == 2) {
 			printGameInstructions();
@@ -83,15 +79,18 @@ int main() {
 			if (statistics.round == 3) {
 				statistics.round = 0;
 				saveScore(playerInfo.score);
+				printFinalScreen(playerInfoP);
 				playerInfo.score = 0;
 				break;
 			}
 			statistics.round++;
 		}
-	}
 
-	free(card);
-	card = NULL;
-	return 0;
+		if (choice == 4) {
+			free(card);
+			card = NULL;
+			return 0;
+		}
+	}
 }
 

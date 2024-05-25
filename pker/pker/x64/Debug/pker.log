@@ -1,4 +1,3 @@
 ﻿  functions.c
-F:\CODE\Poker\pker\functions.c(133,27): warning C4090: 'function': different 'const' qualifiers
-F:\CODE\Poker\pker\functions.c(450,9): warning C4047: '=': 'FILE *' differs in levels of indirection from 'int'
+F:\CODE\Poker\pker\functions.c(455,9): warning C4047: '=': 'FILE *' differs in levels of indirection from 'int'
   pker.vcxproj -> F:\CODE\Poker\pker\x64\Debug\pker.exe

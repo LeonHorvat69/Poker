@@ -26,6 +26,7 @@ int calculateMult(const PLAYER_INFO* playerInfo);
 char* handType(const PLAYER_INFO* playerInfo);
 int* sameRankCount(playerInfo, tempArray);
 int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList);
+void printFinalScreen(const PLAYER_INFO* playerInfo);
 
 int printMenu();
 int printGameInstructions();

@@ -182,14 +182,6 @@ void playHand(PLAYER_INFO* playerInfo) {
 		input = getInput("gameInput");
 		if (input == 0)
 			break;
-		for (int i = 0; i < numOfCardsPlayed; i++) {
-			if (playerInfo->playedHand[i]->rank == playerInfo->hand[input - 1]->rank &&
-				playerInfo->playedHand[i]->suit == playerInfo->hand[input - 1]->suit) {
-				input = getInput("gameInput"); //Ako je karta vec u ruci iskoristena ponovo upisi input
-				if (input == 0)
-					break;
-			}
-		}
 
 		if (input < 0) { //used for discarding cards
 			if (playerInfo->discards == 0) {
@@ -204,39 +196,51 @@ void playHand(PLAYER_INFO* playerInfo) {
 
 		}
 
+		for (int i = 0; i < numOfCardsPlayed; i++) {
+			if (playerInfo->playedHand[i]->rank == playerInfo->hand[input - 1]->rank &&
+				playerInfo->playedHand[i]->suit == playerInfo->hand[input - 1]->suit) {
+				input = getInput("gameInput"); //Ako je karta vec u ruci iskoristena ponovo upisi input
+				if (input == 0)
+					break;
+			}
+		}
 
+		
+		
 		playerInfo->playedHand[numOfCardsPlayed] = playerInfo->hand[input - 1];
 		numOfCardsPlayed++;
 		playerInfo->statistics->allCardsPlayedInRound++;
 		//playedHand su karte koje se igraju i uzimaju se iz arraya hand sa indexom input (input - odabrana karta)
 	} while (numOfCardsPlayed < 5);
+	
+
 	playerInfo->cardsPlayed = numOfCardsPlayed;
 	FindCardSuit(playerInfo);
 }
 int getInput(char* chooseInput) {
 	int min = 0;
 	int max = 0;
+	char* text = NULL;
 	if (strcmp(chooseInput, "gameInput") == 0) {
-		char* text = "Input cards to play";
+		text = "Input cards to play: ";
 		min = -8;
 		max = 8;
 	}
 	else if (strcmp(chooseInput, "menuInput") == 0) {
-		char* text = "Input menu option";
+		text = "Input menu option: ";
 		min = 1;
 		max = 4;
 	}
 	int input = 0;
 	char keyInput[50];
 	do {
-		printf("Input cards to play: ");
+		printf("%s", text);
 		if (fgets(keyInput, 40, stdin) == NULL) {
 			
 			memset(keyInput, '\0', 40);
 			input = getInput(chooseInput);
 		}
-		if (keyInput[0] == '0' || min != 1) {
-			
+		if (keyInput[0] == '0' && min != 1) {
 			input = 0;
 			return input;
 		}
@@ -415,6 +419,13 @@ int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList)
 	}
 	return 1;
 }
+void printFinalScreen(const PLAYER_INFO* playerInfo) {
+	Sleep(5000);
+	system("cls");
+	printf("\n\n\n\t\t\tFinal score ");
+	printf("\n\t\t%d", playerInfo->score);
+	Sleep(5000);
+}
 
 
 //BONUSES
@@ -428,9 +439,6 @@ int printMenu() {
 	system("cls");
 	return input;
 }
-
-
-
 int printGameInstructions() {
 	printf("Each round you are handed 8 cards and from them choose 5 cards or less to play.\n");
 	printf("You can discard up to 3 cards in a round to create a new hand.\n");
@@ -440,7 +448,6 @@ int printGameInstructions() {
 	_getch();
 	return printMenu();
 }
-
 void saveScore(const int score) {
 	int oldScore = 0;
 	char temp[30] = {'\0'};
