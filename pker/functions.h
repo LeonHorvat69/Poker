@@ -29,6 +29,6 @@ int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList)
 void printFinalScreen(const PLAYER_INFO* playerInfo);
 
 int printMenu();
-int printGameInstructions();
+void printGameInstructions();
 void saveScore(int score);
 void saveScore(const int score);

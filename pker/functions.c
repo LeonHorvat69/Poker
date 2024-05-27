@@ -85,7 +85,7 @@ void shuffleDeck(CARD* deck[], CARD* allCardsInOrder[]) {
 
 // PRINT HAND
 void printGame(const PLAYER_INFO* playerInfo, const int discardUsed) {
-	if (playerInfo->score != 0 && discardUsed == 0) {
+	if (playerInfo->statistics->round != 1 && discardUsed == 0) {
 		Sleep(5000);
 	}
 
@@ -205,7 +205,7 @@ void playHand(PLAYER_INFO* playerInfo) {
 			}
 		}
 
-		
+
 		
 		playerInfo->playedHand[numOfCardsPlayed] = playerInfo->hand[input - 1];
 		numOfCardsPlayed++;
@@ -255,6 +255,7 @@ int getInput(char* chooseInput) {
 	} while (input < min || input > max);
 	return input;
 }
+
 void sortPlayedHand(PLAYER_INFO* playerInfo) {
 	int arraySorted = 0;
 	int count = 0;
@@ -422,8 +423,20 @@ int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList)
 void printFinalScreen(const PLAYER_INFO* playerInfo) {
 	Sleep(5000);
 	system("cls");
-	printf("\n\n\n\t\t\tFinal score ");
-	printf("\n\t\t%d", playerInfo->score);
+	char spacing[] = "   ";
+
+	
+	if (playerInfo->score < 100 && playerInfo->score > 9) {
+		strcpy(spacing, "  ");
+	}
+	else if (playerInfo->score > 99 ) {
+		strcpy(spacing, " ");
+	}
+	printf("\n\n\n\n");
+	printf("                     --------------------------------       \n");
+	printf("                    |            Final score         |      \n");
+	printf("                    |                %d     %s       |      \n", playerInfo->score, spacing);
+	printf("                     --------------------------------       \n");
 	Sleep(5000);
 }
 
@@ -437,16 +450,16 @@ int printMenu() {
 	printf("4. Exit game\n");
 	int input = getInput("menuInput");
 	system("cls");
+	memset(stdin, '\0', 10);
 	return input;
 }
-int printGameInstructions() {
+void printGameInstructions() {
 	printf("Each round you are handed 8 cards and from them choose 5 cards or less to play.\n");
 	printf("You can discard up to 3 cards in a round to create a new hand.\n");
 	printf("All hand types have different values and multipliers which add up with the worth of each rank from each card.\n");
 	printf("The goal is to get as high of a score as you can.\n");
-	printf("\n\t\t  [Press any key to continue]");
+	printf("\n\t\t  [Press any key to continue]\n");
 	_getch();
-	return printMenu();
 }
 void saveScore(const int score) {
 	int oldScore = 0;

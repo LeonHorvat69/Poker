@@ -36,11 +36,10 @@
               "RelativeDocumentMoniker": "poker.c",
               "ToolTip": "F:\\CODE\\Poker\\pker\\poker.c",
               "RelativeToolTip": "poker.c",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAFEAAAAUAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAFMAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-05-24T21:35:59.972Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -54,7 +53,7 @@
               "RelativeDocumentMoniker": "functions.c",
               "ToolTip": "F:\\CODE\\Poker\\pker\\functions.c",
               "RelativeToolTip": "functions.c",
-              "ViewState": "AQIAALgAAAAAAAAAAAD4v8UAAAAAAAAA",
+              "ViewState": "AQIAAMUBAAAAAAAAAAAYwP0AAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-05-24T21:35:59.058Z",
               "EditorCaption": ""
@@ -67,10 +66,9 @@
               "RelativeDocumentMoniker": "functions.h",
               "ToolTip": "F:\\CODE\\Poker\\pker\\functions.h",
               "RelativeToolTip": "functions.h",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABwAAAA1AAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-24T21:40:24.685Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T21:40:24.685Z"
             },
             {
               "$type": "Document",

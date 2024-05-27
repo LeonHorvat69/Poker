@@ -37,11 +37,11 @@ int main() {
 	statistics.round = 1;
 	shuffleDeck(playerInfoP->deck, allCardsInOrder);
 
-	int startRound = 1;
 	int choice = 0;
 	while (1) {
 		choice = printMenu();
 		if (choice == 2) {
+			
 			printGameInstructions();
 			continue;
 		}
@@ -77,7 +77,7 @@ int main() {
 			scoreHand(playerInfoP);
 
 			if (statistics.round == 3) {
-				statistics.round = 0;
+				statistics.round = 1;
 				saveScore(playerInfo.score);
 				printFinalScreen(playerInfoP);
 				playerInfo.score = 0;
