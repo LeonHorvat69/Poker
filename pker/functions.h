@@ -9,7 +9,7 @@ void shuffleDeck(CARD* deck[], CARD* allCardsInOrder[]);
 // PRINT HAND
 void printGame(const PLAYER_INFO* playerInfo, const int discardUsed);
 void printInstructions();
-void FindCardSuit(PLAYER_INFO* playerInfo);
+void findCardSuit(PLAYER_INFO* playerInfo);
 void printCardColor(const CARD* hand, const int ChoseColor);
 
 // PLAYING HAND
@@ -24,7 +24,7 @@ void scoreHand(PLAYER_INFO* playerInfo);
 int calculateChips(const PLAYER_INFO* playerInfo, int* cardChips);
 int calculateMult(const PLAYER_INFO* playerInfo);
 char* handType(const PLAYER_INFO* playerInfo);
-int* sameRankCount(playerInfo, tempArray);
+int* sameRankCount(const PLAYER_INFO* playerInfo, int* array);
 int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList);
 void printFinalScreen(const PLAYER_INFO* playerInfo);
 

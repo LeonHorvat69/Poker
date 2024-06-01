@@ -39,7 +39,8 @@ extern int deckIndex;
 CARD* dynamicSpace() {
 	CARD* card = (CARD*)malloc(cardAmount * sizeof(CARD));
 	if (card == NULL) {
-		return NULL;
+		perror("Dynamic space allocation of CARDs failed.");
+		exit(EXIT_FAILURE);
 	}
 	return card;
 }
@@ -56,7 +57,7 @@ void assignRank(CARD* card) {
 }
 void assignSuit(CARD* card) {
 	//Give one of four suits to all cards
-	char(*a[4]) = { HEART, DIAMOND, CLUB, SPADE };
+	const char(*a[4]) = { HEART, DIAMOND, CLUB, SPADE };
 	int j = 0;
 	for (int i = 0; i < cardAmount; i++) {
 		strcpy((card + i)->suit, a[j]);
@@ -86,13 +87,13 @@ void shuffleDeck(CARD* deck[], CARD* allCardsInOrder[]) {
 // PRINT HAND
 void printGame(const PLAYER_INFO* playerInfo, const int discardUsed) {
 	if (playerInfo->statistics->round != 1 && discardUsed == 0) {
-		Sleep(5000);
+		printf("\n\t  [Press any key to continue]\n");
+		_getch();
 	}
 
 	system("cls");
 	printInstructions();
 	printf("Score  %d\n", playerInfo->score);
-	
 	printf("Discards  %d", playerInfo->discards);
 	printf("\t\t\t\t  %d.  Round\n", playerInfo->statistics->round);
 	for (int i = 0; i < handSize; i++) {
@@ -129,7 +130,7 @@ void printInstructions() {
 	printf("High Card\t   5 X 1\t\t\t\n");
 	printf("\n\n");
 }
-void FindCardSuit(PLAYER_INFO* playerInfo) {
+void findCardSuit(PLAYER_INFO* playerInfo) {
 	sortPlayedHand(playerInfo);
 
 	for (int i = 0; i < playerInfo->cardsPlayed; i++) {
@@ -205,8 +206,6 @@ void playHand(PLAYER_INFO* playerInfo) {
 			}
 		}
 
-
-		
 		playerInfo->playedHand[numOfCardsPlayed] = playerInfo->hand[input - 1];
 		numOfCardsPlayed++;
 		playerInfo->statistics->allCardsPlayedInRound++;
@@ -215,7 +214,7 @@ void playHand(PLAYER_INFO* playerInfo) {
 	
 
 	playerInfo->cardsPlayed = numOfCardsPlayed;
-	FindCardSuit(playerInfo);
+	findCardSuit(playerInfo);
 }
 int getInput(char* chooseInput) {
 	int min = 0;
@@ -319,7 +318,6 @@ int calculateChips(const PLAYER_INFO* playerInfo, int* cardChips) {
 			break;
 		}
 	}
-
 	return handTypeChips;
 }
 int calculateMult(const PLAYER_INFO* playerInfo) {
@@ -381,7 +379,6 @@ int* sameRankCount(const PLAYER_INFO* playerInfo, int* array) {
 	for (int i = 0; i < playerInfo->cardsPlayed; i++) {
 		for (int j = 0; j < playerInfo->cardsPlayed; j++) {
 			if ((playerInfo->playedHand[i]->rank == playerInfo->playedHand[j]->rank) && i != j) {
-
 				array[i]++;
 			}
 		}
@@ -397,35 +394,37 @@ int arrayGetSingleNumber(const PLAYER_INFO* playerInfo, const int* sameRankList)
 			arr[i] = sameRankList[i];
 		}
 	}
-	if (playerInfo->cardsPlayed == 5) {
+	if (playerInfo->cardsPlayed == 5) { 
 		if (playerInfo->playedHand[0]->rank == playerInfo->playedHand[1]->rank &&
-			playerInfo->playedHand[4]->rank == playerInfo->playedHand[3]->rank) {
-			return 32;
+			playerInfo->playedHand[4]->rank == playerInfo->playedHand[3]->rank && 
+			(playerInfo->playedHand[2]->rank == playerInfo->playedHand[3]->rank || 
+			playerInfo->playedHand[2]->rank == playerInfo->playedHand[1]->rank)) {
+			return 32;  //Full house
 		}
 	}
-	if (numOfValues == 4) {
+	if (numOfValues == 4) {  
 		if ((playerInfo->playedHand[1]->rank == playerInfo->playedHand[2]->rank &&
 			playerInfo->playedHand[2]->rank == playerInfo->playedHand[3]->rank) &&
 			(playerInfo->playedHand[0]->rank == playerInfo->playedHand[1]->rank ||
 				playerInfo->playedHand[4]->rank == playerInfo->playedHand[3]->rank)) {
-			return 4;
+			return 4; //Four of a kind
 		}
-		else return 22;
+		else return 22;  //Two pair
 	}
 	if (numOfValues == 3) {
-		return 3;
+		return 3;  // Three of a kind
 	}
 	if (numOfValues == 2) {
-		return 2;
+		return 2; //Pair
 	}
-	return 1;
+	return 0;
 }
 void printFinalScreen(const PLAYER_INFO* playerInfo) {
-	Sleep(5000);
+	printf("\n\t  [Press any key to continue]\n");
+	_getch();
 	system("cls");
-	char spacing[] = "   ";
+	char spacing[] = "   ";  //Used to allign final score to screen
 
-	
 	if (playerInfo->score < 100 && playerInfo->score > 9) {
 		strcpy(spacing, "  ");
 	}
@@ -437,7 +436,7 @@ void printFinalScreen(const PLAYER_INFO* playerInfo) {
 	printf("                    |            Final score         |      \n");
 	printf("                    |                %d     %s       |      \n", playerInfo->score, spacing);
 	printf("                     --------------------------------       \n");
-	Sleep(5000);
+	Sleep(6500);
 }
 
 
@@ -450,7 +449,6 @@ int printMenu() {
 	printf("4. Exit game\n");
 	int input = getInput("menuInput");
 	system("cls");
-	memset(stdin, '\0', 10);
 	return input;
 }
 void printGameInstructions() {
@@ -465,8 +463,8 @@ void saveScore(const int score) {
 	int oldScore = 0;
 	char temp[30] = {'\0'};
 	FILE* fp = NULL;
-	if (fp = fopen("score.txt", "r") != NULL) {
-		fp = fopen("score.txt", "r");
+	if (fp = fopen("highScore.txt", "r") != NULL) {
+		fp = fopen("highScore.txt", "r");
 		fgets(temp, 10, fp);
 		int temp2 = atoi(temp);
 		if (temp2 > score) {
@@ -475,12 +473,20 @@ void saveScore(const int score) {
 	}
 	fp = fopen("score.txt", "w");
 	if (fp == NULL) {
-		perror("ERROR: ");
-		exit(-1);
+		perror("File pointer empty ");
+		exit(EXIT_FAILURE);
 	}
 	fprintf(fp, "%d", score);
 	fclose(fp);
 }
+void allScores(const int score) {
+	FILE* fp = NULL;
+	fp = fopen("score.txt", "w");
+	if (fp == NULL) {
+		perror("Cant open score.txt");
+		exit(EXIT_FAILURE);
+	}
 
+}
 
 
