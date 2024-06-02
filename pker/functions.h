@@ -30,5 +30,16 @@ void printFinalScreen(const PLAYER_INFO* playerInfo);
 
 int printMenu();
 void printGameInstructions();
-void saveScore(int score);
 void saveScore(const int score);
+
+void addScoreToList(const int score);
+void createList(FILE* fp, const int score);
+void getSavedList(FILE* fp);
+void insertScore(const int score);
+void sortScores();
+void updateList();
+
+void selectionSort(int polje[], const int n);
+void zamjena(int* const veci, int* const manji);
+void printScoreList();
+

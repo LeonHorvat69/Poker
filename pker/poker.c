@@ -41,19 +41,24 @@ int main() {
 	while (1) {
 		choice = printMenu();
 		if (choice == 2) {
-			
 			printGameInstructions();
 			continue;
 		}
 		if (choice == 3) {
 			int highScore = 0;
-			FILE* fp = fopen("score.txt", "r");
+			FILE* fp = fopen("highScore.txt", "r");
+			if (fp == NULL) {
+				printf("No high score");
+				_getch();
+				continue;
+			}
 			if (fscanf(fp, "%d", &highScore) == NULL) {
 				perror("ERROR: ");
 				exit(-1);
 			}
-			printf("High score is %d", highScore);
-			printf("\n\t\t  Press any key to continue");
+			printf("\n\n\n\t\t      High score is %d", highScore);
+			printScoreList();
+			printf("\n\t\t  Press any key to continue\n\n");
 			_getch();			
 			fclose(fp);
 			continue;
@@ -79,6 +84,7 @@ int main() {
 			if (statistics.round == 3) {
 				statistics.round = 1;
 				saveScore(playerInfo.score);
+				addScoreToList(playerInfo.score);
 				printFinalScreen(playerInfoP);
 				playerInfo.score = 0;
 				break;

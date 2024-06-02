@@ -460,10 +460,9 @@ void printGameInstructions() {
 	_getch();
 }
 void saveScore(const int score) {
-	int oldScore = 0;
 	char temp[30] = {'\0'};
 	FILE* fp = NULL;
-	if (fp = fopen("highScore.txt", "r") != NULL) {
+	if (fopen("highScore.txt", "r") != NULL) {
 		fp = fopen("highScore.txt", "r");
 		fgets(temp, 10, fp);
 		int temp2 = atoi(temp);
@@ -471,7 +470,7 @@ void saveScore(const int score) {
 			return;
 		}
 	}
-	fp = fopen("score.txt", "w");
+	fp = fopen("highScore.txt", "w");
 	if (fp == NULL) {
 		perror("File pointer empty ");
 		exit(EXIT_FAILURE);
@@ -479,14 +478,115 @@ void saveScore(const int score) {
 	fprintf(fp, "%d", score);
 	fclose(fp);
 }
-void allScores(const int score) {
-	FILE* fp = NULL;
-	fp = fopen("score.txt", "w");
+
+int scoreListP[10] = { 0 };
+int* scoreList = scoreListP;
+void addScoreToList(const int score) {
+	FILE* fp = fopen("scoreList.txt", "r");
 	if (fp == NULL) {
-		perror("Cant open score.txt");
+		createList(fp, score);
+		return;
+	}
+	
+	if (fp == NULL) {
+		perror("Cant create scoreList");
 		exit(EXIT_FAILURE);
 	}
 
+	getSavedList(fp);
+	fp = fopen("scoreList.txt", "w");
+	insertScore(score);
+	updateList(fp);
+	fclose(fp);
+	
+}
+void createList(FILE* fp, const int score) {
+	fp = fopen("scoreList.txt", "w");
+	if (fp == NULL) {
+		perror("Cant create scoreList.txt");
+		exit(EXIT_FAILURE);
+	}
+	fprintf(fp, "%d ", score);
+	*(scoreList + 0) = score;
+	for (int i = 1; i < 10; i++) 
+		fprintf(fp, "0 ");
+	
+	fclose(fp);
+}
+void getSavedList(FILE* fp) {
+	for (int i = 0; i < 10; i++) {
+		fscanf(fp, "%d", &scoreListP[i]);
+	}
+	
+	fclose(fp);
+}
+void insertScore(const int score) {
+	if (*(scoreList + 0) > score)
+		return;
+	*(scoreList + 0) = score;
+	selectionSort(scoreList, 10);
+
+}
+void sortScores() {
+	int arraySorted = 0;
+	int count = 0;
+	while (arraySorted == 0) {
+		for (int i = 0; i < 9; i++) {
+			if (*(scoreList + i) < *(scoreList + (i + 1))) {
+				arraySwitchPlaceInt(scoreList, i, i + 1);
+				count++;
+			}
+		}
+		if (count == 0)
+			arraySorted = 1;
+		count = 0;
+	}
+}
+void updateList() {
+	FILE* fp = fopen("scoreList.txt", "w");
+	
+	if (fp == NULL) {
+		perror("Cant create scoreList");
+		exit(EXIT_FAILURE);
+	}
+	rewind(fp);
+	for (int i = 0; i < 10; i++) {
+		fprintf(fp, "%d ", *(scoreList + i));
+	}
+	fclose(fp);
 }
 
+
+
+
+void zamjena(int* const veci, int* const manji) {
+	int temp = 0;
+	temp = *manji;
+	*manji = *veci;
+	*veci = temp;
+}
+void selectionSort(int polje[], const int n) {
+	int min = -1;
+	for (int i = 0; i < n - 1; i++)
+	{
+		min = i;
+		for (int j = i + 1; j < n; j++)
+		{
+			if (polje[j] < polje[min]) {
+				min = j;
+			}
+		}
+		zamjena(&polje[i], &polje[min]);
+	}
+}
+
+void printScoreList() {
+	printf("\n\t\tSCOREBOARD");
+	for (int i = 0; i < 9; i++) {
+		printf("\n\t\t    %d.  %d ", i + 1, scoreListP[9 -  i]);
+	}
+	printf("\n\t\t   %d.  %d ", 10, scoreListP[0]);
+
+
+}
 
